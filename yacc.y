@@ -31,8 +31,8 @@ S	:	IF E THEN M S
 		{ 	
 			backpatch(list, $2.truelist, $4.instr);    
 			backpatch(list, $2.falselist, $8.instr);
-                  	$5.nextlist = merge($5.nextlist, $7.nextlist);    
-                  	$$.nextlist = merge($5.nextlist, $9.nextlist); 
+                  $5.nextlist = merge($5.nextlist, $7.nextlist);    
+                  $$.nextlist = merge($5.nextlist, $9.nextlist); 
                 } 
                   
 		|WHILE M E DO M S

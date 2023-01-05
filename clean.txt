@@ -1,2 +1,0 @@
-rm yacc.tab.c yacc.tab.h lex.yy.c
-

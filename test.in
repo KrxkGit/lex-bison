@@ -2,5 +2,5 @@
 	if A = 1 then C := C + 1 
 	else
 		while A <= D do
-			A := A + 2;
+			A := A + 6 + 2;
 			

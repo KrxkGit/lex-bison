@@ -1,19 +1,19 @@
-#ifndef CP_H
-#define CP_H
+#ifndef KRXK
+#define KRXK
 
 #include <stdio.h>
 #include <string.h>
 #include <malloc.h>
 
-typedef struct listele
+typedef struct listelement
 {
     int instrno;
-    struct listele *next;
-}listele;
+    struct listelement *next;
+}listelement;
 
-    listele* new_listele(int no)
+    listelement* new_listelement(int no)
     {
-        listele* p = (listele*)malloc(sizeof(listele));
+        listelement* p = (listelement*)malloc(sizeof(listelement));
         p->instrno = no;
         p->next = NULL;
         return p;
@@ -22,13 +22,13 @@ typedef struct listele
 
 typedef struct instrlist
 {
-    listele *first,*last;
+    listelement *first,*last;
 }instrlist;
 
     instrlist* new_instrlist(int instrno)
     {
         instrlist* p = (instrlist*)malloc(sizeof(instrlist));
-        p->first = p->last = new_listele(instrno);
+        p->first = p->last = new_listelement(instrno);
         return p;
     }
 
@@ -121,7 +121,7 @@ typedef struct codelist
             dst->code = (char**)realloc(dst->code, sizeof(char*)*dst->capacity);
             if (dst->code == NULL)
             {
-                printf("short of memeory\n");
+                printf("lack of memeory\n");
                 return 0;
             }
         }
@@ -142,7 +142,6 @@ typedef struct codelist
 
     int gen_goto(codelist *dst, int instrno)
     {
-        //sprintf(tmp, "goto %d", instrno);
         sprintf(tmp, "(j, -, -, %d)", instrno);
         Gen(dst, tmp);
         return 0;
@@ -150,7 +149,6 @@ typedef struct codelist
 
     int gen_if(codelist *dst, node left, char* op, node right)
     {
-        //sprintf(tmp, "if %s %s %s goto", left.addr, op, right.addr);
         sprintf(tmp, "(j%s, %s, %s,", op, left.addr, right.addr);
         Gen(dst, tmp);
         return 0;
@@ -165,7 +163,6 @@ typedef struct codelist
 
     int gen_2addr(codelist *dst, node left, char* op, node right)
     {
-        //sprintf(tmp, "%s = %s %s", left.addr, op, right.addr);
         sprintf(tmp, "(%s, %s, -, %s)", op, right.addr, left.addr);
         Gen(dst, tmp);
         return 0;
@@ -173,7 +170,6 @@ typedef struct codelist
 
     int gen_3addr(codelist *dst, node left, node op1, char* op, node op2)
     {
-        //sprintf(tmp, "%s = %s %s %s", left.addr, op1.addr, op, op2.addr);
         sprintf(tmp, "(%s, %s, %s, %s) ", op, op1.addr, op2.addr, left.addr);
         Gen(dst, tmp);
         return 0;
@@ -189,7 +185,7 @@ typedef struct codelist
     {
         if (list!=NULL)
         {
-            listele *p=list->first;
+            listelement *p=list->first;
             char tmp[20];
         
             sprintf(tmp, " %d)", instrno);
