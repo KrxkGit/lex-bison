@@ -23,6 +23,6 @@ jobs:
         # Artifact name
         name: lex-bison
         # A file, directory or wildcard pattern that describes what to upload
-        path: ./KrxkCompiler
+        path: ./KrxkCompiler ./test.in
         # The desired behavior if no files are found using the provided path.
 
