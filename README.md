@@ -1,5 +1,5 @@
 ## 环境
-CentOS 7 64位
+Ubuntu-latest
 
 ## 代码讲解
 
@@ -25,5 +25,10 @@ KrxkCompiler是已经生成可执行的文件
 1. clean		清除所有中间文件及可执行程序
 2. clean_mid	清除所有中间文件	
 3. clean_result	清除可执行程序
+
+### 使用 Github 编译
+
+1. Fork 本仓库
+2. 通过 Actions 运行 Build, 即可在 Artifacts 中下载编译输出文件。
 
 
