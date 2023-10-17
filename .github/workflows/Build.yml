@@ -30,6 +30,7 @@ jobs:
         
     - uses: Shopify/upload-to-release@v1.0.1
       with:
+        id: v1.0
         name: KrxkCompiler
         path: Output.tar.gz
         repo-token: ${{ secrets.REPO_TOKEN }}
