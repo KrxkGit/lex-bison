@@ -28,10 +28,11 @@ jobs:
         # A file, directory or wildcard pattern that describes what to upload
         path: Output.tar.gz
         
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      #if: startsWith(github.ref, 'refs/tags/')
+    - name: Upload to release
+      uses: JasonEtco/upload-to-release@master
       with:
-        files: ./Output.tar.gz
+        args: Output.tar.gz
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               
 
