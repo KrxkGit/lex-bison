@@ -29,5 +29,13 @@ jobs:
         name: lex-bison
         # A file, directory or wildcard pattern that describes what to upload
         path: output
+
+    - name: Start SSH via tmate
+      uses: P3TERX/ssh2actions@main
+      # Send connection info to Telegram (optional)
+      # You can find related documents here: https://core.telegram.org/bots
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
               
 
